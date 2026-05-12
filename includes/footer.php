@@ -9,7 +9,9 @@
           <span class="brand-leaf">🌿</span>
           <span class="brand-text text-white">Goviya<span class="brand-dot">.lk</span></span>
         </div>
-        <p class="text-muted small" style="color:white;">Sri Lanka's freshest farm-to-table marketplace. We connect local farmers with urban households for a healthier, greener tomorrow.</p>
+        <p class="small" style="color: white !important;">
+            Sri Lanka's freshest farm-to-table marketplace. We connect local farmers with urban households for a healthier, greener tomorrow.
+        </p>
         <div class="social-links mt-3">
           <a href="#"><i class="bi bi-facebook"></i></a>
           <a href="#"><i class="bi bi-instagram"></i></a>
@@ -48,7 +50,7 @@
     </div>
 
     <hr class="footer-divider">
-    <div class="d-flex flex-wrap justify-content-between align-items-center small text-muted py-2">
+    <div class="d-flex flex-wrap justify-content-between align-items-center small text-muted py-2" style="color: white !important;">
       <span>&copy; <?= date('Y') ?> Goviya.lk. All rights reserved.</span>
       <span class="d-flex gap-3">
         <a href="#" class="text-muted text-decoration-none">Privacy Policy</a>
