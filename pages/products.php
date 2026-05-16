@@ -4,14 +4,14 @@ $pageTitle = 'Shop Fresh Produce';
 $showFlash = true;
 $db = getDB();
 
-// Filters
+
 $search   = trim($_GET['search']   ?? '');
 $category = trim($_GET['category'] ?? '');
 $minPrice = (float)($_GET['min_price'] ?? 0);
 $maxPrice = (float)($_GET['max_price'] ?? 9999);
 $sort     = $_GET['sort'] ?? 'featured';
 
-// Build query
+
 $params = [];
 $where  = ["p.is_active = 1"];
 
@@ -74,7 +74,7 @@ include __DIR__ . '/../includes/header.php';
 
 <div class="container py-5">
   <div class="row g-4">
-    <!-- SIDEBAR FILTERS -->
+    
     <div class="col-lg-3">
       <div class="bg-white rounded-4 p-4 shadow-sm sticky-top" style="top:90px">
         <h6 class="fw-700 mb-3">🔍 Filter Products</h6>
@@ -132,7 +132,7 @@ include __DIR__ . '/../includes/header.php';
       </div>
     </div>
 
-    <!-- PRODUCTS GRID -->
+    
     <div class="col-lg-9">
       <?php if (empty($products)): ?>
       <div class="text-center py-5">

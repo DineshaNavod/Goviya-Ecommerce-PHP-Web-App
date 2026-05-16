@@ -1,8 +1,4 @@
-/* ============================================================
-   goviya.lk | Main Stylesheet
-   Aesthetic: Fresh green & earthy farm-to-table
-   Fonts: Playfair Display (headings) + DM Sans (body)
-   ============================================================ */
+
 
 :root {
   --clr-green:       #2d6a4f;
@@ -39,7 +35,7 @@ h1, h2, h3, h4, .brand-text {
   font-family: 'Playfair Display', serif;
 }
 
-/* ── TOP BAR ─────────────────────────────────── */
+
 .topbar {
   background: var(--clr-green-dark);
   color: rgba(255,255,255,.75);
@@ -47,7 +43,7 @@ h1, h2, h3, h4, .brand-text {
   padding: 6px 0;
 }
 
-/* ── NAVBAR ──────────────────────────────────── */
+
 .goviya-nav {
   background: var(--clr-green);
   box-shadow: 0 2px 16px rgba(27,67,50,.35);
@@ -87,7 +83,7 @@ h1, h2, h3, h4, .brand-text {
 }
 .goviya-nav .dropdown-item:hover { background: var(--clr-cream); }
 
-/* Search bar */
+
 .search-form  { display: flex; max-width: 360px; flex: 1; margin: 0 16px; }
 .search-input {
   border: none;
@@ -108,7 +104,7 @@ h1, h2, h3, h4, .brand-text {
 }
 .search-btn:hover { background: var(--clr-accent-dark); }
 
-/* Cart icon */
+
 .cart-icon-wrap { position: relative; font-size: 1.3rem; padding: 6px 10px !important; }
 .cart-badge {
   position: absolute;
@@ -122,7 +118,7 @@ h1, h2, h3, h4, .brand-text {
   font-weight: 700;
 }
 
-/* Buttons */
+
 .btn-accent {
   background: var(--clr-accent);
   color: var(--clr-white) !important;
@@ -154,7 +150,7 @@ h1, h2, h3, h4, .brand-text {
 .text-green  { color: var(--clr-green) !important; }
 .bg-green    { background: var(--clr-green) !important; }
 
-/* ── HERO ─────────────────────────────────────── */
+
 .hero-section {
   background: linear-gradient(135deg, var(--clr-green-dark) 0%, var(--clr-green) 60%, var(--clr-green-mid) 100%);
   position: relative;
@@ -192,7 +188,7 @@ h1, h2, h3, h4, .brand-text {
   pointer-events: none;
 }
 
-/* ── SECTION TITLES ──────────────────────────── */
+
 .section-title {
   font-size: clamp(1.6rem, 3vw, 2.4rem);
   color: var(--clr-green-dark);
@@ -200,7 +196,7 @@ h1, h2, h3, h4, .brand-text {
 }
 .section-lead { color: var(--clr-muted); margin-bottom: 36px; font-size: 1rem; }
 
-/* ── CATEGORY CARDS ──────────────────────────── */
+
 .category-card {
   background: var(--clr-white);
   border-radius: var(--radius);
@@ -222,7 +218,7 @@ h1, h2, h3, h4, .brand-text {
 .category-icon { font-size: 2.8rem; margin-bottom: 10px; display: block; }
 .category-card h6 { color: var(--clr-green-dark); font-weight: 600; margin: 0; font-size: .95rem; }
 
-/* ── PRODUCT CARDS ───────────────────────────── */
+
 .product-card {
   background: var(--clr-white);
   border-radius: var(--radius);
@@ -290,11 +286,11 @@ h1, h2, h3, h4, .brand-text {
 .btn-add-cart:hover { background: var(--clr-green-dark); }
 .btn-add-cart.loading { opacity: .7; pointer-events: none; }
 
-/* ── CART PAGE ───────────────────────────────── */
+
 .cart-table { background: var(--clr-white); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
 .cart-summary-card { background: var(--clr-white); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-sm); position: sticky; top: 90px; }
 
-/* ── CHECKOUT ────────────────────────────────── */
+
 .checkout-section { background: var(--clr-white); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow-sm); }
 .payment-option {
   border: 2px solid #e0e0e0;
@@ -307,7 +303,7 @@ h1, h2, h3, h4, .brand-text {
 .payment-option:hover,
 .payment-option.selected { border-color: var(--clr-green); background: var(--clr-cream); }
 
-/* ── FORMS ───────────────────────────────────── */
+
 .form-card {
   background: var(--clr-white);
   border-radius: var(--radius);
@@ -330,14 +326,14 @@ h1, h2, h3, h4, .brand-text {
 }
 .input-group-text { background: var(--clr-cream); border: 1.5px solid #dde8d8; }
 
-/* ── FEATURES BAR ────────────────────────────── */
+
 .features-bar { background: var(--clr-cream); border-top: 1px solid #e6f0e0; border-bottom: 1px solid #e6f0e0; padding: 24px 0; }
 .feature-item { display: flex; align-items: center; gap: 12px; }
 .feature-icon { font-size: 2rem; color: var(--clr-green); }
 .feature-title { font-weight: 700; font-size: .95rem; color: var(--clr-text); }
 .feature-sub   { font-size: .8rem; color: var(--clr-muted); }
 
-/* ── ADMIN ───────────────────────────────────── */
+
 .admin-sidebar {
   background: var(--clr-green-dark);
   min-height: 100vh;
@@ -369,14 +365,14 @@ h1, h2, h3, h4, .brand-text {
 .stat-earth  { border-left: 5px solid var(--clr-earth); }
 .stat-teal   { border-left: 5px solid #0077b6; }
 
-/* ── ALERTS & STATUS ─────────────────────────── */
+
 .badge-pending    { background: #fff3cd; color: #856404; }
 .badge-confirmed  { background: #d1ecf1; color: #0c5460; }
 .badge-delivered  { background: #d4edda; color: #155724; }
 .badge-cancelled  { background: #f8d7da; color: #721c24; }
 .badge-processing { background: #e2d9f3; color: #432874; }
 
-/* ── FOOTER ──────────────────────────────────── */
+
 .site-footer { background: var(--clr-green-dark); padding: 60px 0 0; }
 .footer-heading { color: var(--clr-accent); font-size: .85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 14px; font-family: 'DM Sans', sans-serif; }
 .footer-links { list-style: none; padding: 0; }
@@ -397,7 +393,7 @@ h1, h2, h3, h4, .brand-text {
 }
 .social-links a:hover { background: var(--clr-accent); }
 
-/* ── UTILITIES ───────────────────────────────── */
+
 .main-content { min-height: 70vh; }
 .page-hero { background: linear-gradient(135deg, var(--clr-green) 0%, var(--clr-green-mid) 100%); padding: 48px 0 36px; }
 .page-hero h1 { color: var(--clr-white); }
@@ -405,7 +401,7 @@ h1, h2, h3, h4, .brand-text {
 .page-hero .breadcrumb-item.active { color: var(--clr-accent); }
 .page-hero .breadcrumb-item + .breadcrumb-item::before { color: rgba(255,255,255,.5); }
 
-/* Fade-in animation */
+
 @keyframes fadeInUp {
   from { opacity:0; transform:translateY(24px); }
   to   { opacity:1; transform:translateY(0); }
@@ -415,7 +411,7 @@ h1, h2, h3, h4, .brand-text {
 .delay-2 { animation-delay: .2s; }
 .delay-3 { animation-delay: .3s; }
 
-/* ── RESPONSIVE ──────────────────────────────── */
+
 @media (max-width: 991px) {
   .admin-sidebar { display: none; }
   .admin-content { margin-left: 0; }

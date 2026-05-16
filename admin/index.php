@@ -20,7 +20,7 @@ $lowStock = $db->query("SELECT * FROM products WHERE stock < 10 AND is_active=1 
   <span class="text-muted small"><?= date('l, d F Y') ?></span>
 </div>
 
-<!-- STAT CARDS -->
+
 <div class="row g-3 mb-4">
   <div class="col-sm-6 col-xl-3">
     <div class="stat-card stat-green">
@@ -49,7 +49,7 @@ $lowStock = $db->query("SELECT * FROM products WHERE stock < 10 AND is_active=1 
 </div>
 
 <div class="row g-4">
-  <!-- RECENT ORDERS -->
+  
   <div class="col-lg-8">
     <div class="bg-white rounded-4 shadow-sm p-4">
       <div class="d-flex justify-content-between mb-3">
@@ -79,7 +79,7 @@ $lowStock = $db->query("SELECT * FROM products WHERE stock < 10 AND is_active=1 
     </div>
   </div>
 
-  <!-- LOW STOCK ALERT -->
+  
   <div class="col-lg-4">
     <div class="bg-white rounded-4 shadow-sm p-4">
       <h6 class="fw-700 mb-3">⚠️ Low Stock Alert</h6>

@@ -5,7 +5,7 @@ $pageTitle = 'Checkout';
 $db = getDB();
 $userId = $_SESSION['user_id'];
 
-// Fetch cart
+
 $stmt = $db->prepare(
     "SELECT c.quantity, p.id, p.name, p.price, p.sale_price, p.unit, p.stock
      FROM cart c JOIN products p ON c.product_id = p.id WHERE c.user_id = ?"
@@ -25,7 +25,7 @@ foreach ($cartItems as $item) {
 $delivery   = $subtotal >= 2000 ? 0 : 250;
 $grandTotal = $subtotal + $delivery;
 
-// Fetch user info
+
 $user = $db->prepare("SELECT * FROM users WHERE id = ?");
 $user->execute([$userId]);
 $user = $user->fetch();
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
             $orderId = $db->lastInsertId();
 
-            // Insert order items
+            
             $insItem = $db->prepare(
                 "INSERT INTO order_items (order_id, product_id, name, price, quantity, subtotal)
                  VALUES (?,?,?,?,?,?)"
@@ -82,11 +82,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             foreach ($cartItems as $item) {
                 $price = $item['sale_price'] ?: $item['price'];
                 $insItem->execute([$orderId, $item['id'], $item['name'], $price, $item['quantity'], $price * $item['quantity']]);
-                // Reduce stock
+                
                 $db->prepare("UPDATE products SET stock = stock - ? WHERE id = ?")->execute([$item['quantity'], $item['id']]);
             }
 
-            // Clear cart
+            
             $db->prepare("DELETE FROM cart WHERE user_id = ?")->execute([$userId]);
 
             $db->commit();
@@ -116,7 +116,7 @@ include __DIR__ . '/../includes/header.php';
   <form method="POST" id="checkoutForm">
     <?= csrf_field() ?>
     <div class="row g-4">
-      <!-- DELIVERY DETAILS -->
+      
       <div class="col-lg-7">
         <div class="checkout-section mb-4">
           <h5 class="fw-700 mb-4"><i class="bi bi-geo-alt-fill text-success me-2"></i>Delivery Details</h5>
@@ -147,11 +147,11 @@ include __DIR__ . '/../includes/header.php';
           </div>
         </div>
 
-        <!-- PAYMENT -->
+        
         <div class="checkout-section">
           <h5 class="fw-700 mb-4"><i class="bi bi-credit-card-fill text-success me-2"></i>Payment Method</h5>
 
-          <!-- Card -->
+          
           <div class="payment-option <?= ($_POST['payment_method'] ?? '') === 'card' ? 'selected' : '' ?>"
                data-method="card">
             <div class="d-flex align-items-center gap-3">
@@ -164,7 +164,7 @@ include __DIR__ . '/../includes/header.php';
             </div>
           </div>
 
-          <!-- Card Fields (shown when card selected) -->
+          
           <div id="card-fields" class="mt-3 p-3 rounded-3"
                style="background:var(--clr-cream);display:<?= ($_POST['payment_method'] ?? '') === 'card' ? 'block' : 'none' ?>">
             <div class="row g-3">
@@ -189,7 +189,7 @@ include __DIR__ . '/../includes/header.php';
             </div>
           </div>
 
-          <!-- COD -->
+          
           <div class="payment-option <?= ($_POST['payment_method'] ?? 'cod') === 'cod' ? 'selected' : '' ?>"
                data-method="cod">
             <div class="d-flex align-items-center gap-3">
@@ -202,7 +202,7 @@ include __DIR__ . '/../includes/header.php';
             </div>
           </div>
 
-          <!-- Bank Transfer -->
+          
           <div class="payment-option <?= ($_POST['payment_method'] ?? '') === 'bank_transfer' ? 'selected' : '' ?>"
                data-method="bank_transfer">
             <div class="d-flex align-items-center gap-3">
@@ -217,7 +217,7 @@ include __DIR__ . '/../includes/header.php';
         </div>
       </div>
 
-      <!-- ORDER SUMMARY -->
+      
       <div class="col-lg-5">
         <div class="cart-summary-card">
           <h5 class="fw-700 mb-4">Order Summary</h5>

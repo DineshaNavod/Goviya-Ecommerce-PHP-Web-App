@@ -9,7 +9,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?= isset($pageTitle) ? clean($pageTitle) . ' | ' . SITE_NAME : SITE_NAME ?></title>
-  <!-- CSRF token + SITE_URL for JS — must be in <head> before main.js loads -->
+  
   <meta name="csrf" content="<?= csrf_token() ?>">
   <meta name="site-url" content="<?= SITE_URL ?>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -21,7 +21,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 </head>
 <body>
 
-<!-- TOP BAR -->
+
 <div class="topbar">
   <div class="container d-flex justify-content-between align-items-center">
     <span><i class="bi bi-geo-alt-fill me-1"></i> Free delivery within Colombo for orders over Rs.2000</span>
@@ -29,7 +29,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   </div>
 </div>
 
-<!-- MAIN NAVBAR -->
+
 <nav class="navbar navbar-expand-lg sticky-top goviya-nav">
   <div class="container">
     <a class="navbar-brand" href="<?= SITE_URL ?>/index.php">

@@ -52,7 +52,7 @@ include __DIR__ . '/../includes/header.php';
   </div>
   <?php else: ?>
   <div class="row g-4">
-    <!-- CART ITEMS -->
+    
     <div class="col-lg-8">
       <div class="cart-table">
         <table class="table mb-0 align-middle">
@@ -114,7 +114,7 @@ include __DIR__ . '/../includes/header.php';
       </div>
     </div>
 
-    <!-- ORDER SUMMARY -->
+    
     <div class="col-lg-4">
       <div class="cart-summary-card">
         <h5 class="fw-700 mb-4">Order Summary</h5>

@@ -1,5 +1,5 @@
 <?php
-// Always output JSON — must be before any output
+
 header('Content-Type: application/json');
 header('X-Content-Type-Options: nosniff');
 

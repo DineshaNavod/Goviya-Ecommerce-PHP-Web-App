@@ -3,7 +3,7 @@ $pageTitle = 'Orders';
 require_once __DIR__ . '/admin_header.php';
 $db = getDB();
 
-// Update order status
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verify_csrf();
     $orderId = (int)$_POST['order_id'];
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     header('Location: orders.php'); exit;
 }
 
-// Filter
+
 $filterStatus = $_GET['status'] ?? '';
 $where = $filterStatus ? "WHERE o.status = " . $db->quote($filterStatus) : '';
 
@@ -40,7 +40,7 @@ foreach ($statuses as $s) {
   <span class="text-muted small"><?= count($orders) ?> order<?= count($orders) != 1 ? 's' : '' ?></span>
 </div>
 
-<!-- STATUS FILTER TABS -->
+
 <div class="d-flex flex-wrap gap-2 mb-4">
   <a href="orders.php" class="btn btn-sm <?= !$filterStatus ? 'btn-green' : 'btn-outline-secondary' ?>">All</a>
   <?php foreach ($statuses as $s): ?>
@@ -103,7 +103,7 @@ foreach ($statuses as $s) {
           </form>
         </td>
       </tr>
-      <!-- Order Items Row (collapsible) -->
+      
       <tr class="table-light">
         <td colspan="8" class="px-4 py-2">
           <?php

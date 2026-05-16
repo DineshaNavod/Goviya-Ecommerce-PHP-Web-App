@@ -5,7 +5,7 @@ $showFlash = true;
 
 $db = getDB();
 
-// Featured products
+
 $featured = $db->query(
     "SELECT p.*, c.name AS cat_name FROM products p
      JOIN categories c ON p.category_id = c.id
@@ -13,7 +13,7 @@ $featured = $db->query(
      LIMIT 8"
 )->fetchAll();
 
-// All categories
+
 $categories = $db->query("SELECT * FROM categories WHERE is_active = 1")->fetchAll();
 
 $catIcons = [
@@ -27,7 +27,7 @@ $catIcons = [
 include __DIR__ . '/includes/header.php';
 ?>
 
-<!-- HERO -->
+
 <section class="hero-section">
   <div class="container position-relative z-1">
     <div class="row align-items-center">
@@ -51,7 +51,7 @@ include __DIR__ . '/includes/header.php';
   <div class="hero-emoji-float" aria-hidden="true">🥬🍅🌽🥕</div>
 </section>
 
-<!-- FEATURES BAR -->
+
 <div class="features-bar">
   <div class="container">
     <div class="row g-3 text-center text-md-start">
@@ -95,7 +95,7 @@ include __DIR__ . '/includes/header.php';
   </div>
 </div>
 
-<!-- CATEGORIES -->
+
 <section class="py-5" id="categories">
   <div class="container">
     <h2 class="section-title text-center">Shop by Category</h2>
@@ -113,7 +113,7 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- FEATURED PRODUCTS -->
+
 <section class="py-5 bg-light">
   <div class="container">
     <div class="d-flex justify-content-between align-items-end mb-4">
@@ -173,7 +173,7 @@ include __DIR__ . '/includes/header.php';
   </div>
 </section>
 
-<!-- PROMO BANNER -->
+
 <section class="py-5">
   <div class="container">
     <div class="row g-4">

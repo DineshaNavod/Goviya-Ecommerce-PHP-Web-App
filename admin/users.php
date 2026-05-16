@@ -3,7 +3,7 @@ $pageTitle = 'Users';
 require_once __DIR__ . '/admin_header.php';
 $db = getDB();
 
-// Toggle role or deactivate (soft delete by changing role is not implemented; we just display)
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verify_csrf();
     $action = $_POST['action'] ?? '';

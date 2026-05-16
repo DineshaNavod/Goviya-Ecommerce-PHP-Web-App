@@ -17,7 +17,7 @@ $currentAdmin = basename($_SERVER['PHP_SELF']);
 </head>
 <body>
 
-<!-- ADMIN SIDEBAR -->
+
 <aside class="admin-sidebar d-none d-lg-flex flex-column">
   <div class="brand">
     <div class="brand-text text-white fs-5">🌿 Goviya.lk</div>
@@ -36,7 +36,7 @@ $currentAdmin = basename($_SERVER['PHP_SELF']);
   </nav>
 </aside>
 
-<!-- MOBILE TOP NAV -->
+
 <nav class="navbar goviya-nav d-lg-none">
   <div class="container-fluid">
     <span class="brand-text text-white">🌿 Goviya Admin</span>

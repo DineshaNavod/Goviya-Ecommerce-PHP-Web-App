@@ -1,7 +1,5 @@
 <?php
-// ─────────────────────────────────────────────
-//  goviya.lk | Auth & Session Helpers
-// ─────────────────────────────────────────────
+
 require_once __DIR__ . '/config.php';
 
 if (session_status() === PHP_SESSION_NONE) {
@@ -13,7 +11,7 @@ if (session_status() === PHP_SESSION_NONE) {
     ]);
 }
 
-// ── CSRF ──────────────────────────────────────
+
 function csrf_token(): string {
     if (empty($_SESSION['csrf_token'])) {
         $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -31,7 +29,7 @@ function verify_csrf(): void {
     }
 }
 
-// ── AUTH CHECKS ───────────────────────────────
+
 function isLoggedIn(): bool {
     return !empty($_SESSION['user_id']);
 }
@@ -51,7 +49,7 @@ function requireAdmin(): void {
     }
 }
 
-// ── SESSION FLASH MESSAGES ────────────────────
+
 function setFlash(string $type, string $msg): void {
     $_SESSION['flash'] = ['type' => $type, 'msg' => $msg];
 }
@@ -70,12 +68,12 @@ function showFlash(): void {
           </div>";
 }
 
-// ── INPUT SANITISE ────────────────────────────
+
 function clean(string $val): string {
     return htmlspecialchars(strip_tags(trim($val)), ENT_QUOTES, 'UTF-8');
 }
 
-// ── CART COUNT ────────────────────────────────
+
 function cartCount(): int {
     if (!isLoggedIn()) return 0;
     $db  = getDB();
@@ -84,7 +82,7 @@ function cartCount(): int {
     return (int)$stmt->fetchColumn();
 }
 
-// ── ORDER NUMBER GENERATOR ────────────────────
+
 function generateOrderNumber(): string {
     return 'GVY-' . strtoupper(substr(uniqid(), -6)) . '-' . date('Y');
 }

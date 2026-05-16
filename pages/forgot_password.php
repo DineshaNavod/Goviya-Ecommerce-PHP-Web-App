@@ -20,10 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $expires = date('Y-m-d H:i:s', strtotime('+1 hour'));
             $db->prepare("UPDATE users SET reset_token=?, reset_expires=? WHERE id=?")
                ->execute([$token, $expires, $user['id']]);
-            // In production: send email with reset link
-            // mail($email, 'Reset your Goviya.lk password', SITE_URL . '/pages/reset_password.php?token=' . $token);
+            
+            
         }
-        // Always show success to prevent email enumeration
+        
         $message = 'If that email exists, a reset link has been sent.';
     }
 }

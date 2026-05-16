@@ -14,7 +14,7 @@ if (!$product) { header('Location: ' . SITE_URL . '/pages/products.php'); exit; 
 
 $pageTitle = $product['name'];
 
-// Related products
+
 $related = $db->prepare(
     "SELECT p.*, c.name AS cat_name FROM products p JOIN categories c ON p.category_id=c.id
      WHERE p.category_id=? AND p.id != ? AND p.is_active=1 LIMIT 4"
@@ -43,7 +43,7 @@ include __DIR__ . '/../includes/header.php';
 
 <div class="container py-5">
   <div class="row g-5">
-    <!-- IMAGE -->
+    
     <div class="col-md-5">
       <div class="bg-white rounded-4 shadow-sm overflow-hidden d-flex align-items-center justify-content-center"
            style="min-height:360px;font-size:10rem;background:var(--clr-cream)!important">
@@ -56,7 +56,7 @@ include __DIR__ . '/../includes/header.php';
       </div>
     </div>
 
-    <!-- DETAILS -->
+    
     <div class="col-md-7">
       <div class="text-muted small mb-2"><?= clean($product['cat_name']) ?></div>
       <h1 class="h2 fw-700 mb-3"><?= clean($product['name']) ?></h1>
@@ -107,7 +107,7 @@ include __DIR__ . '/../includes/header.php';
     </div>
   </div>
 
-  <!-- RELATED PRODUCTS -->
+  
   <?php if (!empty($related)): ?>
   <div class="mt-5">
     <h3 class="section-title mb-4">More from <?= clean($product['cat_name']) ?></h3>

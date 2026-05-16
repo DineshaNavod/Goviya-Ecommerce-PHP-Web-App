@@ -1,4 +1,4 @@
-/* goviya.lk | main.js — v5 FINAL */
+
 (function() {
 'use strict';
 
@@ -58,7 +58,7 @@ function updateCartBadge(count) {
     }
 }
 
-// ── ADD TO CART ───────────────────────────────
+
 document.addEventListener('click', function(e) {
     var btn = e.target.closest ? e.target.closest('.btn-add-cart') : null;
     if (!btn) {
@@ -117,7 +117,7 @@ document.addEventListener('click', function(e) {
     xhr.send(body);
 });
 
-// ── UPDATE QUANTITY ───────────────────────────
+
 document.addEventListener('change', function(e) {
     var input = e.target;
     if (!input.classList.contains('qty-input')) return;
@@ -140,7 +140,7 @@ document.addEventListener('change', function(e) {
     xhr.send(body);
 });
 
-// ── REMOVE FROM CART ──────────────────────────
+
 document.addEventListener('click', function(e) {
     var btn = null;
     var el = e.target;
@@ -167,7 +167,7 @@ document.addEventListener('click', function(e) {
     xhr.send(body);
 });
 
-// ── PAYMENT METHOD SELECT ─────────────────────
+
 document.querySelectorAll('.payment-option').forEach(function(opt) {
     opt.addEventListener('click', function() {
         document.querySelectorAll('.payment-option').forEach(function(o) {
@@ -183,11 +183,11 @@ document.querySelectorAll('.payment-option').forEach(function(opt) {
     });
 });
 
-// ── ADMIN CONFIRM DELETES ─────────────────────
+
 document.querySelectorAll('[data-confirm]').forEach(function(el) {
     el.addEventListener('click', function(e) {
         if (!confirm(el.getAttribute('data-confirm') || 'Are you sure?')) e.preventDefault();
     });
 });
 
-})(); // end IIFE — no global variable conflicts possible
+})(); 

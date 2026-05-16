@@ -3,14 +3,14 @@ $pageTitle = 'Products';
 require_once __DIR__ . '/admin_header.php';
 $db = getDB();
 
-// HANDLE ACTIONS
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     verify_csrf();
     $action = $_POST['action'] ?? '';
 
     if ($action === 'delete') {
         $id = (int)$_POST['id'];
-        // Delete old image if exists
+        
         $row = $db->prepare("SELECT image FROM products WHERE id=?");
         $row->execute([$id]);
         $old = $row->fetchColumn();
@@ -32,15 +32,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $desc      = clean($_POST['description'] ?? '');
         $featured  = isset($_POST['is_featured']) ? 1 : 0;
 
-        // ── IMAGE UPLOAD ──────────────────────────
-        $imageName = $_POST['existing_image'] ?? null; // keep old image by default
+        
+        $imageName = $_POST['existing_image'] ?? null; 
 
         if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
             $file     = $_FILES['image'];
             $allowed  = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
             $maxSize  = 2 * 1024 * 1024; // 2MB
 
-            // Validate
+            
             $finfo    = finfo_open(FILEINFO_MIME_TYPE);
             $mimeType = finfo_file($finfo, $file['tmp_name']);
             finfo_close($finfo);
@@ -54,12 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location: products.php'); exit;
             }
 
-            // Delete old image if editing
+            
             if ($action === 'edit' && $imageName && file_exists(__DIR__ . '/../assets/images/products/' . $imageName)) {
                 unlink(__DIR__ . '/../assets/images/products/' . $imageName);
             }
 
-            // Save with unique name
+          
             $ext       = pathinfo($file['name'], PATHINFO_EXTENSION);
             $imageName = 'prod_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . strtolower($ext);
             $dest      = __DIR__ . '/../assets/images/products/' . $imageName;
@@ -177,7 +177,7 @@ $catIcons   = ['vegetables'=>'🥦','fruits'=>'🍎','rice-grains'=>'🌾','dair
   <?php endif; ?>
 </div>
 
-<!-- ── ADD MODAL ──────────────────────────────── -->
+
 <div class="modal fade" id="addModal" tabindex="-1">
   <div class="modal-dialog modal-lg">
     <div class="modal-content rounded-4">
@@ -233,7 +233,7 @@ $catIcons   = ['vegetables'=>'🥦','fruits'=>'🍎','rice-grains'=>'🌾','dair
               <textarea name="description" class="form-control" rows="2" placeholder="Short product description…"></textarea>
             </div>
 
-            <!-- IMAGE UPLOAD -->
+            
             <div class="col-12">
               <label class="form-label fw-600">Product Image</label>
               <div class="upload-area" id="addUploadArea" onclick="document.getElementById('addImageInput').click()">
@@ -266,7 +266,7 @@ $catIcons   = ['vegetables'=>'🥦','fruits'=>'🍎','rice-grains'=>'🌾','dair
   </div>
 </div>
 
-<!-- ── EDIT MODAL ─────────────────────────────── -->
+
 <div class="modal fade" id="editModal" tabindex="-1">
   <div class="modal-dialog modal-lg">
     <div class="modal-content rounded-4">
@@ -289,7 +289,7 @@ $catIcons   = ['vegetables'=>'🥦','fruits'=>'🍎','rice-grains'=>'🌾','dair
   </div>
 </div>
 
-<!-- UPLOAD STYLES -->
+
 <style>
 .upload-area {
   border: 2px dashed #74c69d;
@@ -312,12 +312,12 @@ $catIcons   = ['vegetables'=>'🥦','fruits'=>'🍎','rice-grains'=>'🌾','dair
 const categories = <?= json_encode($categories) ?>;
 const siteUrl    = '<?= SITE_URL ?>';
 
-// Image preview
+
 function previewImage(input, previewId, placeholderId) {
     const file = input.files[0];
     if (!file) return;
 
-    // Validate size client-side
+    
     if (file.size > 2 * 1024 * 1024) {
         alert('Image must be under 2MB');
         input.value = '';
@@ -334,7 +334,7 @@ function previewImage(input, previewId, placeholderId) {
     reader.readAsDataURL(file);
 }
 
-// Edit product modal
+
 function editProduct(p) {
     document.getElementById('editId').value = p.id;
     document.getElementById('editExistingImage').value = p.image || '';

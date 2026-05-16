@@ -76,7 +76,7 @@ $categories = $db->query(
   </table>
 </div>
 
-<!-- ADD MODAL -->
+
 <div class="modal fade" id="addCatModal" tabindex="-1">
   <div class="modal-dialog">
     <div class="modal-content rounded-4">

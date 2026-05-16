@@ -1,19 +1,13 @@
--- ============================================================
---  goviya.lk  |  E-Commerce Database Schema
---  ICT2152 Mini Project | University of Ruhuna
--- ============================================================
 
 CREATE DATABASE IF NOT EXISTS goviya_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE goviya_db;
 
--- ─────────────────────────────────────────────
--- 1. USERS
--- ─────────────────────────────────────────────
+
 CREATE TABLE users (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(100)        NOT NULL,
     email       VARCHAR(150)        NOT NULL UNIQUE,
-    password    VARCHAR(255)        NOT NULL,          -- bcrypt hash
+    password    VARCHAR(255)        NOT NULL,          
     phone       VARCHAR(20),
     address     TEXT,
     role        ENUM('customer','admin') DEFAULT 'customer',
@@ -23,9 +17,7 @@ CREATE TABLE users (
     updated_at  TIMESTAMP           DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- ─────────────────────────────────────────────
--- 2. CATEGORIES
--- ─────────────────────────────────────────────
+
 CREATE TABLE categories (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     name        VARCHAR(100)  NOT NULL,
@@ -36,9 +28,6 @@ CREATE TABLE categories (
     created_at  TIMESTAMP     DEFAULT CURRENT_TIMESTAMP
 );
 
--- ─────────────────────────────────────────────
--- 3. PRODUCTS
--- ─────────────────────────────────────────────
 CREATE TABLE products (
     id            INT AUTO_INCREMENT PRIMARY KEY,
     category_id   INT            NOT NULL,
@@ -47,7 +36,7 @@ CREATE TABLE products (
     description   TEXT,
     price         DECIMAL(10,2)  NOT NULL,
     sale_price    DECIMAL(10,2)  DEFAULT NULL,
-    unit          VARCHAR(30)    DEFAULT 'kg',   -- kg, g, piece, bunch …
+    unit          VARCHAR(30)    DEFAULT 'kg',   
     stock         INT            DEFAULT 0,
     image         VARCHAR(255),
     is_featured   TINYINT(1)     DEFAULT 0,
@@ -57,9 +46,7 @@ CREATE TABLE products (
     FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 
--- ─────────────────────────────────────────────
--- 4. ORDERS
--- ─────────────────────────────────────────────
+
 CREATE TABLE orders (
     id              INT AUTO_INCREMENT PRIMARY KEY,
     user_id         INT             NOT NULL,
@@ -79,9 +66,7 @@ CREATE TABLE orders (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- ─────────────────────────────────────────────
--- 5. ORDER ITEMS
--- ─────────────────────────────────────────────
+
 CREATE TABLE order_items (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     order_id    INT             NOT NULL,
@@ -94,9 +79,7 @@ CREATE TABLE order_items (
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
 );
 
--- ─────────────────────────────────────────────
--- 6. CART (persistent server-side cart)
--- ─────────────────────────────────────────────
+
 CREATE TABLE cart (
     id          INT AUTO_INCREMENT PRIMARY KEY,
     user_id     INT NOT NULL,
@@ -108,26 +91,14 @@ CREATE TABLE cart (
     FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
 );
 
--- ─────────────────────────────────────────────
--- SEED DATA
--- ─────────────────────────────────────────────
 
--- Default admin  (password: Admin@1234)
-INSERT INTO users 
-(name, email, password, phone, address, role, reset_token, reset_expires)
-VALUES
-(
-    'Admin Goviya',
-    'admin@goviya.lk',
-    '$2y$12$xlQKlArYxv4JfXbRYkRE6uoqUR4WmNzgqxWN/LBVZkcg6L7HMwEJm',
-    NULL,
-    NULL,
-    'admin',
-    NULL,
-    NULL
-);
 
--- Categories
+
+INSERT INTO users (name, email, password, role) VALUES
+('Admin Goviya', 'admin@goviya.lk',
+ '$2y$12$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.usd2pCx2y', 'admin');
+
+
 INSERT INTO categories (name, slug, description, image) VALUES
 ('Vegetables',   'vegetables',   'Fresh farm vegetables',          'vegetables.jpg'),
 ('Fruits',       'fruits',       'Seasonal & exotic fruits',       'fruits.jpg'),
@@ -135,7 +106,7 @@ INSERT INTO categories (name, slug, description, image) VALUES
 ('Dairy & Eggs', 'dairy-eggs',   'Fresh dairy products and eggs',  'dairy.jpg'),
 ('Herbs & Spices','herbs-spices','Aromatic herbs and spices',      'herbs.jpg');
 
--- Sample Products
+
 INSERT INTO products 
 (category_id, name, slug, description, price, sale_price, unit, stock, image, is_featured, is_active)
 VALUES

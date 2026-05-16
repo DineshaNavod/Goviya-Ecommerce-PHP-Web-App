@@ -51,7 +51,7 @@ include __DIR__ . '/../includes/header.php';
   <?php if ($success): ?><div class="alert alert-success"><?= $success ?></div><?php endif; ?>
   <?php foreach ($errors as $e): ?><div class="alert alert-danger"><?= $e ?></div><?php endforeach; ?>
 
-  <!-- PROFILE INFO -->
+  
   <div class="bg-white rounded-4 shadow-sm p-4 mb-4">
     <h5 class="fw-700 mb-4">Personal Information</h5>
     <form method="POST">
@@ -79,7 +79,7 @@ include __DIR__ . '/../includes/header.php';
     </form>
   </div>
 
-  <!-- CHANGE PASSWORD -->
+  
   <div class="bg-white rounded-4 shadow-sm p-4">
     <h5 class="fw-700 mb-4">Change Password</h5>
     <form method="POST">
